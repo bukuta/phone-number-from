@@ -1,6 +1,7 @@
 #ifndef RestApi_hpp
 #define RestApi_hpp
 
+
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include <cpprest/json.h>

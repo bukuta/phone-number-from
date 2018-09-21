@@ -1,4 +1,4 @@
-#include "post.hpp"
+#include "Post.hpp"
 #include <boost/algorithm/string/replace.hpp>
 
 using namespace std;
@@ -20,10 +20,10 @@ void from_json(const json& j, Post& p){
 }
 
 std::ostream& operator<<(std::ostream& out,const Post& p){
-  out << "Post{userId = " << p.userId
-      << ",id = "         << p.id
-      << ",title = \""    << p.title
-      << ",body = \""     << p.body
-      << "\"}";
+  out << "Post{userId=" << p.userId
+      << ", id="         << p.id
+      << ", title=\""    << p.title << "\""
+      << ", body=\""     << p.body <<"\""
+      << "}";
   return out;
 }
