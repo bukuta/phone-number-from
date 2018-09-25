@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        ".clang-format": "yaml",
         "__config": "cpp",
         "__nullptr": "cpp",
         "cstddef": "cpp",
@@ -15,6 +16,9 @@
         "slist": "cpp",
         "cfenv": "cpp",
         "cmath": "cpp",
-        "__locale": "cpp"
-    }
+        "__locale": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

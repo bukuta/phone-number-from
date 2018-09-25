@@ -5,6 +5,7 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
+  Logger::trace("This is log");
   Logger::info("This is log");
   Logger::warn("This is log");
   Logger::error("This is log");

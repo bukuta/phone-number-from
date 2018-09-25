@@ -18,6 +18,4 @@ void from_json(const json&j, Post& p);
 
 std::ostream& operator<<(std::ostream& out, const Post& p);
 
-
 #endif /* Post_hpp */
-

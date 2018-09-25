@@ -1,0 +1,48 @@
+baseUrl: http://10.151.10.131:8080/
+path: /dial/task/insert
+targets:
+  - name: 袁波 
+    phone: 13436853227 
+  - name: 刘骏 
+    phone: 15210837739
+aaa:
+  - name: 柴进 
+    phone: 13718841848         
+  - name: 公帅 
+    phone: 13811865652 
+  - name: 关老师 
+    phone: 13581603884 
+  - name: 范来琦 
+    phone: 18618432834 
+  - name: 寇桂琳 
+    phone: 13426093623 
+  - name: 吴铭 
+    phone: 13073689719 
+  - name: 孙世峰 
+    phone: 18611652150 
+  - name: 常岳 
+    phone: 13521009445 
+  - name: 吴昊宇 
+    phone: 13810095920 
+  - name: 桑颉  
+    phone: 15210466426 
+  - name: 张春雨 
+    phone: 18600576934 
+  - name: 李玉 
+    phone: 17600119253 
+  - name: 王宏 
+    phone: 18810973559 
+  - name: 张扬 
+    phone: 18674525188 
+  - name: 秦学涛 
+    phone: 17316221613 
+  - name: 陈越澎  
+    phone: 13522006670 
+  - name: 曹坚 
+    phone: 15201679822 
+  - name: 翠花 
+    phone: 18612730373 
+  - name: 刘小兰 
+    phone: 13261962450 
+  - name: 张晶 
+    phone: 13810731341

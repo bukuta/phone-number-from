@@ -1,0 +1,8 @@
+# .clang-format
+# BreakBeforeBraces: Allman
+BasedOnStyle: Google
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterEnum: true
+  AfterStruct: false
+  SplitEmptyFunction: false

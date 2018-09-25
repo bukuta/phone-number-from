@@ -1,43 +1,64 @@
 #ifndef Logger_hpp
 #define Logger_hpp
 
-#include <iostream>
 #include <spdlog/spdlog.h>
+#include <iostream>
 
-class Logger{
-    public:
-        Logger(){
-            std::cout<<"Logger()"<<std::endl;
-        }
-        static std::shared_ptr<spdlog::logger> console;
+class Logger {
+ private:
+  //   Logger() { std::cout << "Logger()" << std::endl; }
+  static std::shared_ptr<spdlog::logger> console;
 
-    public:
-    ~Logger(){
-        std::cout<<"~Logger()"<<std::endl;
-    }
+ public:
+  //   ~Logger() { std::cout << "~Logger()" << std::endl; }
+  template <typename... Args>
+  static void trace(const char *fmt, const Args &... args) {
+    console->trace(fmt, args...);
+  }
+  template <class T>
+  static void trace(const T &fmt) {
+    console->trace(fmt);
+  };
 
-      template <class T>
-      static void debug(const T & fmt) {
-            std::cout<<"debug::"<<std::endl;
-        //   instance()->debug(fmt);
-        };
-      template <class T>
-        static void info(const T& fmt){
-            std::cout<<"info::"<<std::endl;
-            console->info(fmt);
-        };
-      template <class T>
-        static void warn(const T& fmt){
-            std::cout<<"warn::"<<std::endl;
-            console->warn(fmt);
-            // instance()->warn(fmt);
-        };
-      template <class T>
-        static void error(const T& fmt){
-            std::cout<<"error::"<<std::endl;
-            console->error(fmt);
-        };
+  template <typename... Args>
+  static void debug(const char *fmt, const Args &... args) {
+    console->debug(fmt, args...);
+  }
+
+  template <class T>
+  static void debug(const T &fmt) {
+    console->debug(fmt);
+  };
+
+  template <typename... Args>
+  static void info(const char *fmt, const Args &... args) {
+    console->info(fmt, args...);
+  }
+
+  template <class T>
+  static void info(const T &fmt) {
+    console->info(fmt);
+  };
+
+  template <typename... Args>
+  static void warn(const char *fmt, const Args &... args) {
+    console->warn(fmt, args...);
+  }
+
+  template <class T>
+  static void warn(const T &fmt) {
+    console->warn(fmt);
+  };
+
+  template <typename... Args>
+  static void error(const char *fmt, const Args &... args) {
+    console->error(fmt, args...);
+  }
+
+  template <class T>
+  static void error(const T &fmt) {
+    console->error(fmt);
+  };
 };
-
 
 #endif /* Logger_hpp */
