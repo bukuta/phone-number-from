@@ -18,7 +18,18 @@
         "cmath": "cpp",
         "__locale": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "complex": "cpp",
+        "valarray": "cpp",
+        "iosfwd": "cpp",
+        "fstream": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "rope": "cpp",
+        "string_view": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
