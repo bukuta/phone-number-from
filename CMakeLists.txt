@@ -8,7 +8,7 @@ MESSAGE(STATUS "This is SROUCE dir" ${RESTAPI_SOURCE_DIR})
 # SET(SRC_LIST main.cpp Logger.cpp post.hpp post.cpp RestApi.hpp)
 # SET(SRC_LIST MakeCalls.cpp Logger.cpp Call.cpp call.hpp post.hpp post.cpp RestApi.hpp)
 # SET(SRC_LIST testString.cpp Logger.cpp )
-SET(SRC_LIST_PHONE findPhone.cpp Logger.cpp )
+SET(SRC_LIST_PHONE findPhone.cpp )
 
 INCLUDE_DIRECTORIES(cget/include)
 
