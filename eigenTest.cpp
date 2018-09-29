@@ -22,6 +22,19 @@ int main(int argc, char *argv[]) {
   mm << 1, 2, 3, 4;
   cout << mm << endl;
 
+  if (mm.determinant() != 0) {
+    Logger::error("求逆");
+    cout<<"origin:"<<endl<<mm<<endl;
+    cout<<"mm.determinant()"<<endl;
+    cout<<mm.determinant()<<endl;
+    cout << "mm.inverse()" << endl;
+    cout << mm.inverse() << endl;
+    cout<<"mm.inverse()*mm"<<endl<<mm.inverse()*mm<<endl;
+    cout << "mm.adjoint()/|mm|" << endl;
+    cout << mm.adjoint() << endl;
+    cout << mm.adjoint() / mm.determinant() << endl;
+  }
+
   // 初始化2*2
   Matrix2d m2d;
   m2d = m;
@@ -72,8 +85,13 @@ int main(int argc, char *argv[]) {
   cout << lu_mm.matrixLU() << endl;
   cout << lu_mm.rank() << endl;
 
-  Logger::warn("mm.eigenvalues()");
+  Logger::warn("特征值：mm.eigenvalues()");
   cout << mm.eigenvalues() << endl;
+
+  Logger::warn("特征向量 eigenvectors()");
+  SelfAdjointEigenSolver<MatrixXd> solver(mm);
+  cout<<solver.info()<<endl;
+  cout<<solver.eigenvectors()<<endl;
 
   Logger::error("特殊矩阵生成：");
   Logger::warn("单位矩阵matrixXd::Identity()");
@@ -192,17 +210,29 @@ int main(int argc, char *argv[]) {
   Logger::warn("A.lu().solve(b): ok");
   cout << AA.lu().solve(b) << endl;
 
-  // Logger::warn("A.llt().solve(b):");
-  // cout << AA.llt().sovle(b) << endl;
+  Logger::error("A.llt().solve(b):");
+  // cout << AA.selfadjointView().sovle(b) << endl;
   // MatrixXd rrr =  AA.llt();
   // cout<<rrr<<endl;
 
+  Logger::warn("QR分解：A.colPivHouseholderQr().solve(b):");
+  cout << AA.colPivHouseholderQr().solve(b) << endl;
+  Logger::warn("A.fullPrivLu().sovle(b):");
+  cout << AA.fullPivLu().solve(b) << endl;
+
+  Logger::warn("A.partialPivLu().solve(b):");
+  cout << AA.partialPivLu().solve(b) << endl;
+
+  Logger::warn(" AA.householderQr().resolve(b)");
+  cout << AA.householderQr().solve(b) << endl;
+
+  Logger::warn("AA.fullPivHouseholderQr().solve(b)");
+  cout << AA.fullPivHouseholderQr().solve(b) << endl;
+
   // SVD解方程
   Logger::warn("A.svd().solve(b): ok");
-
-  // cout<<AA.svd().solve(b)<<endl;
-  // BDCSVD<MatrixXd> r2(AA);
   JacobiSVD<MatrixXd> svd(AA, ComputeFullU | ComputeFullV);
+  cout << AA.jacobiSvd(ComputeFullU | ComputeFullV).solve(b) << endl;
 
   cout << "svd:" << endl;
   cout << "svd.matrixU():" << endl;
@@ -211,7 +241,6 @@ int main(int argc, char *argv[]) {
   cout << svd.matrixV() << endl;
 
   cout << "solve:" << endl;
-  cout << AA.jacobiSvd(ComputeFullU | ComputeFullV).solve(b) << endl;
 
   // QR分解 解方程
   Logger::warn("QR 解方程");
