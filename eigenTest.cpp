@@ -93,6 +93,9 @@ int main(int argc, char *argv[]) {
   cout<<solver.info()<<endl;
   cout<<solver.eigenvectors()<<endl;
 
+  // cout << "特征值*特征向量：" << endl;
+  // cout<<solver.eigenvalues() *solver.eigenvectors()<<endl;
+
   Logger::error("特殊矩阵生成：");
   Logger::warn("单位矩阵matrixXd::Identity()");
   cout << MatrixXd::Identity(2, 2) << endl;
@@ -181,6 +184,24 @@ int main(int argc, char *argv[]) {
   Logger::warn("matrix.sin()");
   cout << m23d.array().sin() << endl;
 
+  Logger::error("QR分解");
+  Matrix3d A;
+  A << 1, 1, 1, 2, -1, -1, 2, -4, 5;
+  HouseholderQR<Matrix3d> qr;
+  qr.compute(A);
+  MatrixXd R = qr.matrixQR().triangularView<Upper>();
+  MatrixXd Q = qr.householderQ();
+  cout << "QR2():" << endl;
+  cout << "A " << endl << A << endl << endl;
+  cout << "qr.matrixQR():" << endl << qr.matrixQR() << endl << endl;
+  cout << "R" << endl << R << endl << endl;
+  cout << "Q" << endl << Q << endl << endl;
+  cout << "Q*R" << endl << Q * R << endl << endl;
+
+
+
+
+
   Logger::error("解方程:");
   Matrix2d AA;
   AA << 2, 3, 4, 5;
@@ -268,17 +289,23 @@ int main(int argc, char *argv[]) {
   cout << xy << endl;
   // cout << qr0.matrixQR().resolve;
 
-  Logger::error("QR分解");
-  Matrix3d A;
-  A << 1, 1, 1, 2, -1, -1, 2, -4, 5;
-  HouseholderQR<Matrix3d> qr;
-  qr.compute(A);
-  MatrixXd R = qr.matrixQR().triangularView<Upper>();
-  MatrixXd Q = qr.householderQ();
-  cout << "QR2():" << endl;
-  cout << "A " << endl << A << endl << endl;
-  cout << "qr.matrixQR():" << endl << qr.matrixQR() << endl << endl;
-  cout << "R" << endl << R << endl << endl;
-  cout << "Q" << endl << Q << endl << endl;
-  cout << "Q*R" << endl << Q * R << endl << endl;
+  Logger::warn("克拉默Cramer法则：");
+  cout << "方程:" << endl << AA << endl;
+  cout << "b:" << endl << b << endl;
+  double D = AA.determinant();
+  cout << "determinat:" << D << endl;
+  // MatrixXd copy = AA.block(0,0,2,2);
+  // copy.col(0)=b;
+  // cout<<copy<<endl;
+  // cout<<"AA:"<<endl;
+  // cout<<AA<<endl;
+  MatrixXd copy0 = AA.block(0, 0, 2, 2);
+  copy0.col(0) = b;
+  MatrixXd copy1 = AA.block(0, 0, 2, 2);
+  copy1.col(1) = b;
+  // cout<<"copy0.determinat()"<<copy0.det
+  Vector2d rrr(copy0.determinant(), copy1.determinant());
+  cout << rrr << endl;
+  rrr = rrr / D;
+  cout << rrr << endl;
 }
